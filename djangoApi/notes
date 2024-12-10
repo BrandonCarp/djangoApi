@@ -1,7 +1,0 @@
-python3 manage.py runserver
-
-changes to db/models :
-python3 manage.py makemigrations
-python3 manage.py migrations
-
-pip install djangorestframework
