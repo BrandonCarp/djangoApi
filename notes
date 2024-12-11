@@ -10,3 +10,6 @@ pip install djangorestframework
 admin panel :
 python3 manage.py runserver
 then /admin
+
+
+# use MySQL or PostgreSQL (prob us MySQL for practice ie: flask) for working with the DB 
