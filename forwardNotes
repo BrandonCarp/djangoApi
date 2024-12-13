@@ -1,0 +1,89 @@
+# Should You Add More to the App for Your Portfolio?
+# To make it portfolio-worthy, consider adding features that showcase your backend skills:
+
+# Authentication:
+# Add token-based authentication (e.g., JWT) using DRF’s SimpleJWT. This would let you secure endpoints for creating or editing blog posts.
+
+# Pagination and Filters:
+
+# Paginate the blog list (e.g., 10 posts per page).
+# Allow filtering blogs by date_published or searching by title.
+# Categories or Tags:
+
+# Add a Category model or a tagging system to group blog posts.
+# Example: Blog could have a category = models.ForeignKey(Category, on_delete=models.CASCADE) field.
+# Comments:
+
+# Create a Comment model tied to Blog posts.
+# Example fields: author, content, date_posted.
+# API Documentation:
+
+# Use tools like Swagger to auto-generate API docs.
+# Deployment:
+
+# Deploy your app to a platform like Render or Railway.
+# Ensure your API has a professional-looking endpoint (e.g., /api/blogs).
+# These features can demonstrate more advanced skills without being overly complex.
+
+# Cookies and Sessions in Flask
+# Cookies in Flask:
+# Cookies are small pieces of data stored on the client’s browser. They’re used for tracking or identifying users between requests. Flask makes working with cookies easy via its request and response objects.
+
+# Set a Cookie:
+
+# python
+# Copy code
+# @app.route('/set_cookie')
+# def set_cookie():
+#     resp = make_response("Cookie is set")
+#     resp.set_cookie('username', 'JohnDoe')
+#     return resp
+# Here, set_cookie('key', 'value') stores the cookie on the client.
+
+# Access a Cookie:
+
+# python
+# Copy code
+# @app.route('/get_cookie')
+# def get_cookie():
+#     username = request.cookies.get('username')
+#     return f'Hello, {username}'
+# Delete a Cookie:
+
+# python
+# Copy code
+# resp.delete_cookie('username')
+# Sessions in Flask:
+# Sessions are used to store user-specific data server-side but tied to a specific client through a cookie. Flask uses a signed cookie to store the session ID, ensuring data integrity and security.
+
+# Enable Sessions:
+# Flask’s session object requires a SECRET_KEY to encrypt the session cookie.
+
+# python
+# Copy code
+# app = Flask(__name__)
+# app.secret_key = 'your_secret_key'
+# Set a Session Variable:
+
+# python
+# Copy code
+# @app.route('/set_session')
+# def set_session():
+#     session['username'] = 'JohnDoe'
+#     return "Session set"
+# Access a Session Variable:
+
+# python
+# Copy code
+# @app.route('/get_session')
+# def get_session():
+#     username = session.get('username')
+#     return f'Logged in as {username}'
+# Clear a Session:
+
+# python
+# Copy code
+# session.pop('username', None)
+# When to Use Cookies vs. Sessions:
+# Cookies: Use when you need to store small, non-sensitive data on the client side (e.g., preferences, themes).
+# Sessions: Use for storing sensitive or larger data tied to a user but kept server-side (e.g., login status, shopping cart).
