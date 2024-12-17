@@ -1,0 +1,28 @@
+from flask import Flask, jsonify
+import requests
+
+app = Flask(__name__)
+
+@app.route('/fetch-data', methods=['GET'])
+def fetch_data():
+    # Replace with your API URL
+    api_url = "https://jsonplaceholder.typicode.com/posts"
+    
+    try:
+        # Fetch data from the API
+        response = requests.get(api_url)
+        response.raise_for_status()  # Raise an error for bad status codes
+        
+        # Parse JSON response
+        data = response.json()
+        
+        # Optionally filter or process data
+        filtered_data = data[:5]  # Example: Limit to first 5 items
+        
+        return jsonify(filtered_data)
+    
+    except requests.exceptions.RequestException as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
