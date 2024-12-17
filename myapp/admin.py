@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import TodoItem, UserItem
+# from .models import TodoItem, UserItem
 
-# Register your models here.
-admin.site.register(TodoItem)
-admin.site.register(UserItem)
+# # Register your models here.
+# admin.site.register(TodoItem)
+# admin.site.register(UserItem)

@@ -1,18 +1,26 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Blog
-from .serializers import BlogSerializer
+import requests
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
+from dotenv import load_dotenv
+import os
 
-class BlogListCreateView(APIView):
-    def get(self, request):
-        blogs = Blog.objects.all()
-        serializer = BlogSerializer(blogs, many=True)
-        return Response(serializer.data)
 
-    def post(self, request):
-        serializer = BlogSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+load_dotenv()
+
+
+NEWS_API_URL = os.getenv("NEWS_API_URL")
+
+@require_GET  
+def fetch_news(request):
+    try:
+        response = requests.get(NEWS_API_URL)
+        
+        response.raise_for_status()
+   
+        data = response.json()
+
+        return JsonResponse(data, safe=False, status=200)
+
+    except requests.exceptions.RequestException as e:
+        
+        return JsonResponse({"error": str(e)}, status=500)

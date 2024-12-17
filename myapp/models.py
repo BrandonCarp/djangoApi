@@ -1,13 +1,13 @@
-from django.db import models
-from django.contrib.auth.hashers import make_password, check_password
+# from django.db import models
+# from django.contrib.auth.hashers import make_password, check_password
 
-class Blog(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.textField()
-    date_published = models.DateTImeField(auto_now_add=True)
+# class Blog(models.Model):
+#     title = models.CharField(max_length=200)
+#     content = models.textField()
+#     date_published = models.DateTImeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.title
 
 # class TodoItem(models.Model):
 #     title = models.CharField(max_length=255)
